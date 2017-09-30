@@ -1,0 +1,35 @@
+/* body {
+    margin: 0;
+  }
+   */
+  #main-image {
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100vh;
+  }
+  
+  .info-box {
+    width: 70vw;
+    height: 50vh;
+    position: absolute;
+    text-align: center;
+    color: white;
+    font-family: "Lato", sans-serif;
+    font-size: 3.5em;
+  }
+  
+  .home-pink {
+    color: #de4696
+  }
+  
+  .home-green {
+    color: #00a887
+  }
+  
