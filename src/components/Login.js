@@ -17,7 +17,7 @@ export default class Login extends Component {
     ];
 
     return (
-      <div className="main-container">
+      <div className="green-hex-background">
         <div className="form-container">
           <UserDataForm title="Login" inputData={inputs}/>
         </div>
