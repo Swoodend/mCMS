@@ -1,0 +1,65 @@
+/*this also has some related styling in login.css*/
+
+h3 {
+    margin: 0;
+    padding: 10px 0 0 10px;
+    font-family: 'Roboto', "sans-seriff";
+}
+
+.form-input {
+    display: block;
+    position: relative;
+    height: 25px;
+    width: calc(100% - 25px);
+    margin-left: 10px;
+    margin-bottom: 15px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 2px solid #00a887;
+    font-family: 'Roboto', 'Sans-seriff';
+}
+
+.form-input:after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 10%;
+    border-bottom: 5px solid #3366FF;
+    transition: 0.4s;
+}
+
+.form-input:focus:after {
+    width: 100%;
+}
+
+.user-data-form {
+    width: 100%;
+}
+
+#login-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 159px;
+    
+}
+
+.submit-button {
+    display: block;
+    margin: 0 auto;
+    font-size : 20px;
+    color : white;
+    padding : 7px 14px;
+    background-color : #de4697;
+    font-family: 'Roboto', 'Sans-seriff';
+    border-width: 0;
+    border: none;
+    position: relative;
+    top: 25px;
+}
+
+.submit-button:hover {
+    cursor: pointer
+}
