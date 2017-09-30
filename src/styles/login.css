@@ -4,10 +4,13 @@
     width: 100vw;
     justify-content: center;
     align-items: center;
+    background-image: url('https://res.cloudinary.com/ddbeeuyr4/image/upload/v1506743726/green-hexagons-background_lr7rmm.png');
+    background-size: 100% 100%;
   }
   
   .form-container {
-    width: 55%;
-    height: 30%;
+    width: 450px;
+    height: 250px;
+    background: white;
   }
   
