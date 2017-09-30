@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import UserDataForm from './UserDataForm';
+import '../styles/login.css';
 
 export default class Login extends Component {
 
@@ -16,7 +17,11 @@ export default class Login extends Component {
     ];
 
     return (
-      <UserDataForm inputData={inputs}/>
+      <div className="main-container">
+        <div className="form-container">
+          <UserDataForm title="Login" inputData={inputs}/>
+        </div>
+      </div>
     )
   }
 }
