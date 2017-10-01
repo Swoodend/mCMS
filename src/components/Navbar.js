@@ -3,6 +3,22 @@ import { Link } from 'react-router-dom';
 import '../styles/navbar.css';
 
 export default class Navbar extends Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      loggedIn : false
+    };
+  }
+
+  componentDidMount(){
+    let loggedIn = this.props.checkLoginState();
+    if (loggedIn){
+      this.setState({
+        loggedIn : true
+      });
+    }
+  }
 
   render(){
 
@@ -17,7 +33,7 @@ export default class Navbar extends Component {
           </Link>
         </div>
 
-        {!this.props.loggedIn &&
+        {!this.state.loggedIn &&
           <div className="right-side-nav">
             <Link to="/login">
               <div className="push-left nav-btn">
