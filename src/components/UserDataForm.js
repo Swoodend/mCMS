@@ -37,7 +37,13 @@ export default class UserDataForm extends Component {
           return res.json();
         }).then((res) => {
           if(res.status === "OK"){
-            console.log('redirect to dashboard');
+            localStorage.setItem("currentUser", email);
+            window.location.href = 'http://localhost:3000/dashboard';
+            //redirect like this because react router doesnt trigger component will mount?
+            // this.props.redirectUser();
+          } else {
+            //flash message here eventually
+            console.log(res.status);
           }
         })
     }
@@ -48,7 +54,10 @@ export default class UserDataForm extends Component {
           return res.json();
         }).then((res) => {
           if (res.status === "OK"){
-            console.log('redirect to dashboard');
+            localStorage.setItem("currentUser", email);
+            window.location.href="http://localhost:3000/dashboard";
+            //redirect like this because react router doesnt trigger component will mount?
+            //this.props.redirectUser();
           }
         })
     }
@@ -71,6 +80,7 @@ export default class UserDataForm extends Component {
   }
 
   render(){
+    console.log('user data form rendering...this.props.setLogin', this.props.setLogin);
     let inputs = this.props.inputData.map((inputObj, i) => {
       return (
         <Input 
