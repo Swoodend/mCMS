@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Input from './Input';
 import '../styles/userdataform.css';
 
 export default class UserDataForm extends Component {
@@ -16,23 +17,53 @@ export default class UserDataForm extends Component {
 
   handleSubmit(e){
     e.preventDefault();
-    console.log('form was submitted with email', this.state.emailValue);
-    console.log('passowrd', this.state.passwordValue);
+
+    let formType = this.props.title;
+    let email = this.state.emailValue;
+    let password = this.state.passwordValue;
+
+    let requestConfig = {
+      method: "POST",
+      body: JSON.stringify({
+        email,
+        password
+      }),
+      headers: {"Content-type":"application/json"}
+    };
+
+    if (formType === "Login"){
+      fetch('/api/login', requestConfig)
+        .then((res) => {
+          return res.json();
+        }).then((res) => {
+          if(res.status === "OK"){
+            console.log('redirect to dashboard');
+          }
+        })
+    }
+
+    if (formType === "Signup"){
+      fetch('/api/signup', requestConfig)
+        .then((res) => {
+          return res.json();
+        }).then((res) => {
+          if (res.status === "OK"){
+            console.log('redirect to dashboard');
+          }
+        })
+    }
     
   }
 
   handleChange(e, inputType){
-    //email or password
-    console.log('handleChange was called with', inputType);
-    console.log('e.target.value', e.target.value);
     
-    if(inputType === "Email"){
+    if(inputType === "email"){
       this.setState({
         emailValue: e.target.value
       });
     }
 
-    if(inputType="Password"){
+    if(inputType="password"){
       this.setState({
         passwordValue: e.target.value
       });
@@ -42,14 +73,13 @@ export default class UserDataForm extends Component {
   render(){
     let inputs = this.props.inputData.map((inputObj, i) => {
       return (
-        <input 
+        <Input 
           className="form-input" 
-          key={i} type={inputObj.type} 
+          key={i} 
+          type={inputObj.type} 
           placeholder={inputObj.placeholder} 
           required="true"
-          onChange={(e) => {
-            this.handleChange(e, inputObj.placeholder);
-          }}
+          updateParentState={this.handleChange}
         />
       )
     });
@@ -58,7 +88,8 @@ export default class UserDataForm extends Component {
       <div>
         <h3>{this.props.title}</h3>
         <div id="login-form">
-          <form onSubmit={this.handleSubmit} className="user-data-form">
+          <form onSubmit={this.handleSubmit}
+            className="user-data-form">
             {inputs}
             <input className="submit-button" type="submit" value="Submit"/>
           </form>
