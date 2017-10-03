@@ -58,6 +58,11 @@ export default class Navbar extends Component {
             <div onClick={this.handleLogout} className="push-left nav-btn">
               Logout
             </div>
+            <Link to="/dashboard">
+              <div className="nav-btn">
+                Dash
+              </div>
+            </Link>
           </div>
         }
       </div>
