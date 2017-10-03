@@ -1,0 +1,22 @@
+h1 {
+    margin: 0;
+}
+
+.main-dash-container {
+    display: flex;
+    height: calc(100vh - 46px)  ;
+    width: 100vw;
+    background: lightblue
+}
+
+.left-action-nav-dash {
+    background: #0002AF;
+    width: 20%;
+    height: 100%;
+}
+
+.right-display-area {
+    background: salmon;
+    width: 80%;
+    height: 100%;
+}
