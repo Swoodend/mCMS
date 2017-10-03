@@ -20,6 +20,11 @@ export default class Navbar extends Component {
     }
   }
 
+  handleLogout(){
+    localStorage.removeItem('currentUser');
+    window.location.href = 'http://localhost:3000';
+  }
+
   render(){
 
     return (
@@ -45,6 +50,14 @@ export default class Navbar extends Component {
                 Sign up
               </div>
             </Link>
+          </div>
+        }
+
+        {this.state.loggedIn && 
+          <div className="right-side-nav">
+            <div onClick={this.handleLogout} className="push-left nav-btn">
+              Logout
+            </div>
           </div>
         }
       </div>
