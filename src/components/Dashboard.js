@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import LeftNav from './LeftNav';
 import "../styles/dashboard.css";
 
 export default class Dashboard extends Component{
@@ -27,9 +28,7 @@ export default class Dashboard extends Component{
         return (
             <div className="main-dash-container">
                 {redirect}
-                <div className="left-action-nav-dash">
-
-                </div>
+                <LeftNav/>
                 <div className="right-display-area">
 
                 </div>
