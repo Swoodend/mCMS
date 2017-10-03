@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import "../styles/dashboard.css";
 
 export default class Dashboard extends Component{
 
@@ -13,8 +14,6 @@ export default class Dashboard extends Component{
     componentWillMount(){
         let loggedIn = this.props.checkLoginState();
         if (loggedIn){
-            
-
             this.setState({
                 loggedIn: true
             })
@@ -28,7 +27,12 @@ export default class Dashboard extends Component{
         return (
             <div className="main-dash-container">
                 {redirect}
-                <h1>welcome to the dashboard page</h1>
+                <div className="left-action-nav-dash">
+
+                </div>
+                <div className="right-display-area">
+
+                </div>
             </div>
         )
     }
