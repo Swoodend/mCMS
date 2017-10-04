@@ -1,45 +1,55 @@
+#pencil-icon {
+    margin-right: 18px;
+    position: relative;
+    left: 5px;   
+}
+
+#np-icon {
+    margin-right: 13px;
+    position: relative;
+    left: 3px;
+}
+
+#gear-icon {
+    margin-right: 20px;
+    position: relative;
+    left: 3px;
+}
+
+#chev-down {
+    position: relative;
+    left: 125px;
+}
+
 .left-nav-container {
     width: 20%;
-    height: 100%;
-}
-
-.left-nav {
-    width: 100%;
-    height: 100%;
-    background: #312F31;
+    height: 100vh;
+    background: #312f31;
+    color: white;
     font-family: 'Roboto';
 }
-
-.nav-item {
-    color: white;
-    width: 100%;
-    height: 55px;
-    line-height: 55px;
-}
-
-.nav-item:hover {
-    background: #504F50;
-    cursor: pointer;
-}
-
-.sub-item {
+  
+.one {
     height: 50px;
-    background: red;
     width: 100%;
-    float: left;
+    margin-bottom: 2px;
+    color: white;
+    padding-left: 10px;
+    line-height: 50px;
 }
 
-i {
-    padding: 0 40px 0 15px;
+.one:hover{
+    cursor: pointer;
+    background: #444345;
 }
+  
 
-.chevron-icon {
-    position: relative;
-    left: 35%;
-}
-
-ul {
-    height: 150px;
-    background: red;
-    display: block;
+.two {
+    color: blue;
+    background: lightgreen;
+    height:50px;
+    width: 100%;
+    margin-bottom: 2px;
+    text-align: center;
+    line-height: 50px;
 }
