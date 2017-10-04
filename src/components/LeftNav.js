@@ -21,26 +21,25 @@ export default class LeftNav extends Component {
     render(){
 
         return (
-
             <div className="left-nav-container">
-                <div className="left-nav">
-                    <div onClick={this.handleClick} className="collapsable nav-item">
-                        <i className="fa fa-pencil"/>  New  <i className="chevron-icon fa fa-chevron-down"/>
-                        {!this.state.collapsed && 
-                            <ul>
-                                <li>Blog</li>
-                                <li>Article</li>
-                                <li>Newsletter</li>
-                            </ul>
-                        }
-                    </div>
-                    <div className="nav-item">
-                        <i className="fa fa-newspaper-o"/>My Content
-                    </div>
-                    <div className="nav-item">
-                        <i className="fa fa-gear"/>  My Account
-                    </div>
+                <div onClick={this.handleClick} className="one">
+                    <i id="pencil-icon" className="fa fa-pencil"/>New<i id="chev-down" className="fa fa-chevron-down"/>
                 </div>
+                {!this.state.collapsed && 
+                <div>
+                    <div className="two">
+                        <i className="fa fa-chevron-right"/>Blog
+                    </div>
+                    <div className="two">
+                        <i className="fa fa-chevron-right"/>Article
+                    </div>
+                    <div className="two">
+                        <i className="fa fa-chevron-right"/>Newsletter
+                    </div>        	  
+                </div>
+                }  
+                <div className="one"><i id="np-icon" className="fa fa-newspaper-o"/>My Content</div>
+                <div className="one"><i id="gear-icon" className="fa fa-gear"/>My Account</div>
             </div>
         )
     }
