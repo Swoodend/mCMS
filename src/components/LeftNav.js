@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import NewContentInfoPage from './NewContentInfoPage';
 import "../styles/leftnav.css";
 
 export default class LeftNav extends Component {
 
 	constructor(props){
 		super(props);
-		this.handleClick = this.handleClick.bind(this);
+		this.handleClickNew = this.handleClickNew.bind(this);
 		this.state = {
 				collapsed : true
 		}
 	}
 
-	handleClick(){
+	handleClickNew(){
+		this.props.changeView(<NewContentInfoPage/>);
+
 		this.setState({
 			collapsed: !this.state.collapsed
 		});
@@ -22,7 +25,7 @@ export default class LeftNav extends Component {
 		let chevronDirection = this.state.collapsed ? 'down' : 'up';
 		return (
 			<div className="left-nav-container">
-				<div onClick={this.handleClick} className="one">
+				<div onClick={this.handleClickNew} className="one">
 					<i id="pencil-icon" className="fa fa-pencil"/>New<i id="chev-down" className={`fa fa-chevron-${chevronDirection}`}/>
 				</div>
 				{!this.state.collapsed && 
