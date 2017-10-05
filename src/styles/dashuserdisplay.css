@@ -1,0 +1,24 @@
+.main-userdisplay-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: burlywood;
+    width: 80vw;
+    height: 100vh;
+    font-family: 'Roboto';
+    text-align: center;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.move-down {
+    position: relative;
+    bottom: 125px;
+    width: 100vw;
+}
+
+.profile-img {
+    position: relative;
+    bottom: 100px;
+    border-radius: 250px;
+}
