@@ -21,6 +21,11 @@
     left: 125px;
 }
 
+.sub-chev{
+    position: relative;
+    right: 55px;
+}
+
 .left-nav-container {
     width: 20%;
     height: 100vh;
@@ -42,14 +47,30 @@
     cursor: pointer;
     background: #444345;
 }
-  
+ 
+.text-1 {
+    position: absolute;
+    left: 100px;
+}
+
+.text-2 {
+    position:absolute;
+    left: 100px;
+}
+
+.text-3 {
+    position: absolute;
+    left: 100px;
+}
 
 .two {
-    color: blue;
-    background: lightgreen;
+    color: white;
     height:50px;
     width: 100%;
-    margin-bottom: 2px;
     text-align: center;
     line-height: 50px;
+}
+
+.two:hover {
+    background:#444345;
 }
