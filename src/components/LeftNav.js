@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import NewContentInfoPage from './NewContentInfoPage';
+import DashUserDisplay from'./DashUserDisplay';
 import "../styles/leftnav.css";
 
 export default class LeftNav extends Component {
@@ -14,10 +15,15 @@ export default class LeftNav extends Component {
 	}
 
 	handleClickNew(){
-		this.props.changeView(<NewContentInfoPage/>);
 
 		this.setState({
 			collapsed: !this.state.collapsed
+		}, () => {
+			if (this.state.collapsed){
+				this.props.changeView(<DashUserDisplay/>);
+			} else {
+				this.props.changeView(<NewContentInfoPage/>);
+			}
 		});
 	}
 	
