@@ -38,17 +38,17 @@ export default class LeftNav extends Component {
 				<div>
 					<Link to="/new/blog">
 						<div className="two">
-							<i className="sub-chev fa fa-chevron-right"/><span className="text-1">Blog</span>
+							<i className="sub-chev fa fa-chevron-right"/><p>Blog</p>
 						</div>
 					</Link>
 					<Link to="/new/article">
 						<div className="two">
-							<i className="sub-chev fa fa-chevron-right"/><span className="text-2">Article</span>
+							<i className="sub-chev fa fa-chevron-right"/><p>Article</p>
 						</div>
 					</Link>
 					<Link to="/new/newsletter">
 						<div className="two">
-							<i className="sub-chev fa fa-chevron-right"/><span className="text-3">Newsletter</span>
+						<i className="sub-chev fa fa-chevron-right"/><p>Newsletter</p>
 						</div>
 					</Link>
 				</div>
