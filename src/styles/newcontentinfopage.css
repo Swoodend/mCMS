@@ -2,4 +2,60 @@
     width: 80vw;
     height: 100vh;
     background: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.icon-row {
+    background: lightpink;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 60vw;
+    height: 20vh;
+    flex-wrap: wrap;
+}
+
+.title-row {
+    height: 80px;
+    width: 100%;
+    background: orange;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.text-area{
+    height: 80px;
+    width: 80px;
+    background: blueviolet;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+}
+
+.descriptor-container {
+    display: flex;
+    justify-content: space-around;
+    height: 60vh;
+    width: 60vw;
+    background: white;
+    position: relative;
+    bottom: 100px;
+}
+
+.descriptor {
+    height: 100%;
+    width: 32%;
+    background: goldenrod;
+    padding: 0 0 10px 10px;
+    font-family: 'Roboto';
+}
+
+.leading-word-big {
+    font-size: 2em;
 }
