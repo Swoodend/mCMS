@@ -40,7 +40,6 @@
 .descriptor-container {
     display: flex;
     justify-content: space-around;
-    height: 35vh;
     width: 60vw;
     background: white;
     position: relative;
@@ -66,4 +65,12 @@
 
 .leading-word-big {
     font-size: 2em;
+}
+
+.pink {
+    color: #de4696
+}
+
+.green {
+    color: #00a887
 }
