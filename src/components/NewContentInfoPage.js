@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import NewContentButton from './NewContentButton';
 import '../styles/newcontentinfopage.css';
 
 export default class NewContentInfoPage extends Component {
@@ -14,30 +15,31 @@ export default class NewContentInfoPage extends Component {
                     <div className="descriptor">
                         <span className="leading-word-big">Blog -</span>
                         <br/>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
-                            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                            sunt in culpa qui officia deserunt mollit anim id est laborum
+                        <p>Blogs are the most content-dense option available to users. Each blog contains a main header, decorative nav,
+                        Two pictures with sub-captions, main body content and a social media footer. Each blog post will also link to the next or
+                        previous blog in the series.
                         </p>
                     </div>
                     <div className="descriptor">
                         <span className="leading-word-big">Article -</span>
                         <br/>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
-                            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                            sunt in culpa qui officia deserunt mollit anim id est laborum
+                        <p>Articles are the most academic/informative option available to users. They contain a main header and
+                        main body content. Articles do not contain pictures. They do not link to other articles and instead
+                        intended to be disconnected and more formal pieces of work.
                         </p>
                     </div>
                     <div className="descriptor">
                         <span className="leading-word-big">Newsletter -</span>
                         <br/>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
-                            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                            sunt in culpa qui officia deserunt mollit anim id est laborum
+                        <p>Newsletters are intended to be more formal than a blog, but less formal when compared to
+                        an article. They feature a main header, one picture with subcaptions and main body content.
                         </p>
                     </div>
+                </div>
+                <div className="button-container">
+                    <NewContentButton contentType="Blog" href="/blog"/>
+                    <NewContentButton contentType="Article" href="/article"/>
+                    <NewContentButton contentType="Newsletter" href="/newsletter"/>
                 </div>
             </div>
         )
