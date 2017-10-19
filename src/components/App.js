@@ -6,6 +6,7 @@ import Signup from './Signup';
 import Login from './Login';
 import Dashboard from './Dashboard';
 import Account from './Account';
+import ContentPage from './ContentPage';
 
 
 export default class App extends Component {
@@ -37,6 +38,7 @@ export default class App extends Component {
               <Dashboard checkLoginState={this.checkLogin} />
             )}/>
             <Route path="/account" component={Account}/>
+            <Route path="/content" component={ContentPage}/>
           </div>
         </BrowserRouter>
       );
