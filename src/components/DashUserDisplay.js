@@ -8,7 +8,7 @@ export default class DashUserDisplay extends Component {
 			<div className="main-userdisplay-container">
 
 				<div className="move-down">
-					<h1>{`Hi ${currentUser}, welcome to your dashboard`}</h1>
+					<h1>Hi {currentUser}, welcome to your dashboard</h1>
 				</div>
 				<img 
 						className="profile-img" 
