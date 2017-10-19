@@ -13,25 +13,25 @@ export default class NewContentInfoPage extends Component {
                 </div>
                 <div className="descriptor-container">
                     <div className="descriptor">
-                        <span className="leading-word-big">Blog -</span>
+                        <span className="leading-word-big"><span className="pink">Blog</span> -</span>
                         <br/>
-                        <p>Blogs are the most content-dense option available to users. Each blog contains a main header, decorative nav,
+                        <p className="green">Blogs are the most content-dense option available to users. Each blog contains a main header, decorative nav,
                         Two pictures with sub-captions, main body content and a social media footer. Each blog post will also link to the next or
                         previous blog in the series.
                         </p>
                     </div>
                     <div className="descriptor">
-                        <span className="leading-word-big">Article -</span>
+                        <span className="leading-word-big"><span className="pink">Article</span> -</span>
                         <br/>
-                        <p>Articles are the most academic/informative option available to users. They contain a main header and
+                        <p className="green">Articles are the most academic/informative option available to users. They contain a main header and
                         main body content. Articles do not contain pictures. They do not link to other articles and instead
                         intended to be disconnected and more formal pieces of work.
                         </p>
                     </div>
                     <div className="descriptor">
-                        <span className="leading-word-big">Newsletter -</span>
+                        <span className="leading-word-big"><span className="pink">Newsletter</span> -</span>
                         <br/>
-                        <p>Newsletters are intended to be more formal than a blog, but less formal when compared to
+                        <p className="green">Newsletters are intended to be more formal than a blog, but less formal when compared to
                         an article. They feature a main header, one picture with subcaptions and main body content.
                         </p>
                     </div>
