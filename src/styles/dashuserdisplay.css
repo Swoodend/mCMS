@@ -9,6 +9,7 @@
     text-align: center;
     flex-wrap: wrap;
     align-content: center;
+    position: relative;
 }
 
 .move-down {
@@ -21,4 +22,47 @@
     position: relative;
     bottom: 100px;
     border-radius: 250px;
+}
+
+.change-image-container {
+    width:80vw;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    bottom: 75px;
+}
+.change-image-button{
+    background: #00a887;
+    color: white;
+    text-align: center;
+    line-height: 45px;
+    height:45px;
+    max-width: 150px;
+    padding: 0 10px 0 10px;
+    font-family: 'roboto';
+}
+.change-image-button:hover {
+    cursor: pointer;
+}
+
+.upload-image-modal {
+    width: 60vw;
+    height: 70vh;
+    background: cornsilk;
+    position: absolute;
+    top:0; bottom:0; right:0; left:0;
+    margin: auto;
+}
+
+.close-button {
+    height: 10px;
+    width: 10px;
+    color: #00a887;
+    position: absolute;
+    top: 2px; right:15px;
+    font-size: 25px;
+}
+
+.close-button:hover {
+    cursor: pointer;
 }
