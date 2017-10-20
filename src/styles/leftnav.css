@@ -31,10 +31,10 @@
   
 .one {
     height: 50px;
-    width: calc(100% - 10px);
+    width: calc(100% - 20px);
     margin-bottom: 2px;
     color: white;
-    padding-left: 10px;
+    padding-left: 20px;
     line-height: 50px;
 }
 
