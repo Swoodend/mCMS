@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ImageUploader from './ImageUploader';
 
 export default class UploadImageModal extends Component {
 
@@ -15,6 +16,7 @@ export default class UploadImageModal extends Component {
         return (
             <div className="upload-image-modal">
                 <div onClick={this.closeButtonClicked} className="close-button">x</div>
+                <ImageUploader/>
             </div>
         )
     }
