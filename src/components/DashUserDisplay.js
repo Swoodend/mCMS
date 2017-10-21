@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import UploadImageModal from './UploadImageModal';
 import '../styles/dashuserdisplay.css';
+import '../styles/uploadimagemodal.css';
 
 export default class DashUserDisplay extends Component {
 	
@@ -30,7 +31,7 @@ export default class DashUserDisplay extends Component {
 				</div>
 				<img 
 						className="profile-img" 
-						src={this.props.profileImg || "http://via.placeholder.com/250x250"}
+						src={this.props.profileImg || "http://localhost:3000/uploads/avatar.jpeg"}
 				/>
 				<div className="change-image-container">
 					<div onClick={this.handleClick} className="change-image-button">Change Image</div>
