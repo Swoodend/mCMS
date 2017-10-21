@@ -45,24 +45,7 @@
     cursor: pointer;
 }
 
-.upload-image-modal {
-    width: 60vw;
-    height: 70vh;
-    background: cornsilk;
-    position: absolute;
-    top:0; bottom:0; right:0; left:0;
-    margin: auto;
-}
-
-.close-button {
-    height: 10px;
-    width: 10px;
-    color: #00a887;
-    position: absolute;
-    top: 2px; right:15px;
-    font-size: 25px;
-}
-
-.close-button:hover {
-    cursor: pointer;
+.profile-img {
+    height: 200px;
+    width: 200px;
 }
