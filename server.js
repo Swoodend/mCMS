@@ -7,6 +7,26 @@ const mongoose = require('mongoose');
 const User = require('./db/UserModel.js').User;
 const bcrypt = require('bcrypt');
 
+//multer stuff
+const multer = require('multer');
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, path.join(__dirname, '/public/uploads'));
+    },
+    filename: function(req, file, cb) {
+        console.log('outside of route');
+        let fileType = file.mimetype;
+        cb(null, file.fieldname + '.' + file.mimetype.substring(file.mimetype.indexOf('/') + 1)); //avatar.png
+    }
+});
+const upload = multer({
+    storage: storage
+});
+
+
+
+
+
 const app = express();
 const port = process.env.PORT || 3001;
 
@@ -59,6 +79,15 @@ app.post('/api/signup', (req, res) => {
     
 });
 
+
+app.post('/api/upload', upload.single('avatar'), (req, res, next) => {
+    //limit size to some amount of bytes
+    //limit file type to .png, .jpeg
+    console.log('inside of route');
+    res.send('coolies');
+
+   
+});
 
 app.listen(port, () => { 
     console.log('app listening on', port);
