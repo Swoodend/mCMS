@@ -21,12 +21,14 @@ export default class UserDataForm extends Component {
     let formType = this.props.title;
     let email = this.state.emailValue;
     let password = this.state.passwordValue;
+    let token = localStorage.getItem("currentUser") || false
 
     let requestConfig = {
       method: "POST",
       body: JSON.stringify({
         email,
-        password
+        password,
+        token: token
       }),
       headers: {"Content-type":"application/json"}
     };
@@ -37,7 +39,9 @@ export default class UserDataForm extends Component {
           return res.json();
         }).then((res) => {
           if(res.status === "OK"){
-            localStorage.setItem("currentUser", email);
+            //TODO: Set this to something more secure in the future, encrypt an identifier (their email i guess) with a time of session expiry.
+            //every call to DB must validate token and then log the user out if it is expired.
+            localStorage.setItem("currentUser", res.token);
             window.location.href = 'http://localhost:3000/dashboard';
             //redirect like this because react router doesnt trigger component will mount?
             // this.props.redirectUser();
@@ -54,7 +58,7 @@ export default class UserDataForm extends Component {
           return res.json();
         }).then((res) => {
           if (res.status === "OK"){
-            localStorage.setItem("currentUser", email);
+            localStorage.setItem("currentUser", res.token);
             window.location.href="http://localhost:3000/dashboard";
             //redirect like this because react router doesnt trigger component will mount?
             //this.props.redirectUser();
