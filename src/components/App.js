@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 import Navbar from './Navbar';
 import Home from './Home';
 import Signup from './Signup';
@@ -32,11 +32,27 @@ export default class App extends Component {
           <div>
             <Navbar checkLoginState={this.checkLogin}/>
             <Route exact path="/" component={Home}/>
-            <Route path="/login" component={Login}/>
-            <Route path="/signup" component={Signup}/>
+            
+            <Route path="/login" render={() => {
+              {if(localStorage.getItem('currentUser')){
+                return <Redirect to="/dashboard"/>
+              } else {
+                return <Login/>
+              }}
+            }}/>
+            
+            <Route path="/signup" render={() => {
+              {if(localStorage.getItem('currentUser')){
+                return <Redirect to="/dashboard"/>
+              } else {
+                return <Signup/>
+              }}
+            }}/>
+            
             <Route path='/dashboard' render={() => (
               <Dashboard checkLoginState={this.checkLogin} />
             )}/>
+            
             <Route path="/account" component={Account}/>
             <Route path="/content" component={ContentPage}/>
           </div>
