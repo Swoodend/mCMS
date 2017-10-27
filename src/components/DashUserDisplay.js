@@ -8,9 +8,11 @@ export default class DashUserDisplay extends Component {
 	constructor(props){
 		super(props);
 		this.handleClick = this.handleClick.bind(this);
+		this.onAvatarUpload = this.onAvatarUpload.bind(this);
 		this.state = {
 			displayingUploadModal:  false,
-			currentUser: null
+			currentUser: null,
+			originalName: null
 		}
 	}
 
@@ -41,8 +43,19 @@ export default class DashUserDisplay extends Component {
 		})
 	}
 
+	onAvatarUpload(currentUser, originalName){
+		console.log('in onAvatarUpload with', currentUser, originalName);
+		this.setState({
+			currentUser,
+			originalName
+		})
+	}
+
 	render(){
 		let { displayingUploadModal } = this.state;
+		let avatarSrc = this.state.originalName ? 
+		"http://localhost:3001/public/uploads/" + this.state.currentUser + '/' + this.state.originalName :
+		"http://via.placeholder.com/250x250"
 	
 		return (
 			<div className="main-userdisplay-container">
@@ -50,15 +63,15 @@ export default class DashUserDisplay extends Component {
 				<div className="move-down">
 					<h1>Hi {this.state.currentUser}, welcome to your dashboard</h1>
 				</div>
-				<img 
-						className="profile-img" 
-						src={this.props.profileImg || "http://localhost:3000/uploads/avatar.jpeg"}
-				/>
+				<img className="profile-img" src={avatarSrc}/>
 				<div className="change-image-container">
 					<div onClick={this.handleClick} className="change-image-button">Change Image</div>
 				</div>
 
-				{displayingUploadModal && <UploadImageModal closeModal={this.handleClick}/>}
+				{displayingUploadModal && <UploadImageModal  
+					closeModal={this.handleClick}
+					onAvatarUpload={this.onAvatarUpload}
+					/>}
 
 			</div>
 		)
