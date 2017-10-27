@@ -9,6 +9,8 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const secret = 'jfha7q8r6yudfgjhasfgvsgfag7rt6twerGHJSAOFG';
 const multer = require('multer');
+const fs = require('fs');
+const imageHelper = require('./helpers/image_upload/image_helpers.js');
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -70,21 +72,34 @@ app.post('/api/upload', (req, res, next) => {
             cb(null, path.join(__dirname, '/public/uploads'));
         },
         filename: function(req, file, cb) {
-            let fileType = file.mimetype;
-            cb(null, file.fieldname + '.' + file.mimetype.substring(file.mimetype.indexOf('/') + 1)); //avatar.png
+            // console.log('file', file);
+            cb(null, file.originalname); //avatar.png
         }
     });
     
     let upload = multer({storage: storage}).single('avatar')
-
-
     upload(req, res, (err) => {
-        console.log('in upload', req.body);
-        if (err){
-            res.send('something went wrong', err)
-        } else {
-            res.json({"status" : "OK"});    
-        }
+        // console.log('rEQ>BODY', req.body);
+        // console.log('req.File', req.file);
+        jwt.verify(req.body.token, secret, (err, userObj) => {
+            let folderExists = fs.existsSync(path.join(__dirname, '/public/uploads', userObj.currentUser))
+            let oldName = path.join(__dirname, '/public/uploads/', req.file.originalname)
+            let newDirectoryPath = path.join(__dirname, '/public/uploads', userObj.currentUser);
+            let newFileLocation = newDirectoryPath + '/' + req.file.originalname;
+            let responseObj = {
+                "status":"OK",
+                currentUser: userObj.currentUser,
+                originalName: req.file.originalname
+            }
+
+            if (folderExists){
+                imageHelper.moveFileAndSend(fs, oldName, newFileLocation, responseObj, res);
+                
+            } else {
+                fs.mkdirSync(newDirectoryPath);
+                imageHelper.moveFileAndSend(fs, oldName, newFileLocation, responseObj, res);
+            }
+        })
     })
 });
 
@@ -92,11 +107,17 @@ app.post('/api/validate', (req, res) => {
     //this route confirms token is valid and sends the current user
     //back to the client to be displayed in the app
     let token = req.body.token;
-    jwt.verify(token, secret, (err, decoded) => {
-        console.log('decoded', decoded);
-        res.json({"status":"OK", "currentUser": decoded.currentUser});
+    jwt.verify(token, secret, (err, decoded) =>{
+        res.json({
+            status:"OK",
+            currentUser: decoded.currentUser
+        })
     })
 });
+
+app.get('/public/uploads/:user/:fileName', (req, res) => {
+    res.sendFile(path.join(__dirname + '/public/uploads/' + req.params.user + '/' + req.params.fileName));
+})
 
 app.listen(port, () => { 
     console.log('app listening on', port);
