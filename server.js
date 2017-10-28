@@ -133,6 +133,13 @@ app.post('/api/validate', (req, res) => {
     })
 });
 
+app.get('/api/get-avatar/:email', (req, res) => {
+    let { email } = req.params;
+    User.findOne({email: email}, (err, user) => {
+        res.json({status: "OK", avatarPath: user.avatar});
+    })
+})
+
 app.get('/public/uploads/:user/:fileName', (req, res) => {
     res.sendFile(path.join(__dirname + '/public/uploads/' + req.params.user + '/' + req.params.fileName));
 })
