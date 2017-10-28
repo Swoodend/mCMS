@@ -11,8 +11,7 @@ export default class DashUserDisplay extends Component {
 		this.onAvatarUpload = this.onAvatarUpload.bind(this);
 		this.state = {
 			displayingUploadModal:  false,
-			currentUser: null,
-			originalName: null
+			avatarPath: null
 		}
 	}
 
@@ -43,19 +42,14 @@ export default class DashUserDisplay extends Component {
 		})
 	}
 
-	onAvatarUpload(currentUser, originalName){
-		console.log('in onAvatarUpload with', currentUser, originalName);
+	onAvatarUpload(responseObj){
 		this.setState({
-			currentUser,
-			originalName
-		})
+			avatarPath: responseObj.avatarPath
+		});
 	}
 
 	render(){
 		let { displayingUploadModal } = this.state;
-		let avatarSrc = this.state.originalName ? 
-		"http://localhost:3001/public/uploads/" + this.state.currentUser + '/' + this.state.originalName :
-		"http://via.placeholder.com/250x250"
 	
 		return (
 			<div className="main-userdisplay-container">
@@ -63,7 +57,7 @@ export default class DashUserDisplay extends Component {
 				<div className="move-down">
 					<h1>Hi {this.state.currentUser}, welcome to your dashboard</h1>
 				</div>
-				<img className="profile-img" src={avatarSrc}/>
+				<img className="profile-img" src={this.state.avatarPath || 'http://via.placeholder.com/250x250'}/>
 				<div className="change-image-container">
 					<div onClick={this.handleClick} className="change-image-button">Change Image</div>
 				</div>
