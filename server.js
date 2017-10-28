@@ -93,11 +93,13 @@ app.post('/api/upload', (req, res, next) => {
             }
 
             if (folderExists){
-                imageHelper.moveFileAndSend(fs, oldName, newFileLocation, responseObj, res);
+                //save path to as users avatar in db
+                //build response obj
+                imageHelper.moveFileAndSend(oldName, newFileLocation, responseObj, res);
                 
             } else {
                 fs.mkdirSync(newDirectoryPath);
-                imageHelper.moveFileAndSend(fs, oldName, newFileLocation, responseObj, res);
+                imageHelper.moveFileAndSend(oldName, newFileLocation, responseObj, res);
             }
         })
     })
