@@ -11,7 +11,8 @@ export default class DashUserDisplay extends Component {
 		this.onAvatarUpload = this.onAvatarUpload.bind(this);
 		this.state = {
 			displayingUploadModal:  false,
-			avatarPath: null
+			avatarPath: null,
+			currentUser: null
 		}
 	}
 
@@ -33,7 +34,18 @@ export default class DashUserDisplay extends Component {
 						currentUser: res.currentUser
 					})
 				}
+			}).then(() => {
+				fetch('/api/get-avatar/' + this.state.currentUser)
+					.then((res) => {
+						return res.json();
+					})
+					.then((res) => {
+						this.setState({
+							avatarPath: res.avatarPath
+						})
+					})
 			})
+
 	}
 
 	handleClick(){
