@@ -86,20 +86,36 @@ app.post('/api/upload', (req, res, next) => {
             let oldName = path.join(__dirname, '/public/uploads/', req.file.originalname)
             let newDirectoryPath = path.join(__dirname, '/public/uploads', userObj.currentUser);
             let newFileLocation = newDirectoryPath + '/' + req.file.originalname;
-            let responseObj = {
-                "status":"OK",
-                currentUser: userObj.currentUser,
-                originalName: req.file.originalname
-            }
+            let pathToAvatar = "http://localhost:3001/public/uploads/" + userObj.currentUser + "/" + req.file.originalname
+            let responseObj = {};
+
 
             if (folderExists){
-                //save path to as users avatar in db
-                //build response obj
-                imageHelper.moveFileAndSend(oldName, newFileLocation, responseObj, res);
+
+                User.findOneAndUpdate({email: userObj.currentUser}, {$set: {avatar: pathToAvatar}}, {new: true}, (err, doc) => {
+                    if (err){
+                        responseObj.status = "ERR"
+                        responseObj.errMsg = "Mongo Error - cannot update user avatar"
+                    }
+                    responseObj.status = "OK"
+                    responseObj.avatarPath = pathToAvatar
+                    imageHelper.moveFileAndSend(oldName, newFileLocation, responseObj, res);
+                
+                })
                 
             } else {
-                fs.mkdirSync(newDirectoryPath);
-                imageHelper.moveFileAndSend(oldName, newFileLocation, responseObj, res);
+                
+                User.findOneAndUpdate({email: userObj.currentUser}, {$set: {avatar: pathToAvatar}}, {new: true}, (err, doc) => {
+                    if (err){
+                        responseObj.status = "ERR"
+                        responseObj.errMsg = "Mongo Error - cannot update user avatar"
+                    }
+                    fs.mkdir(newDirectoryPath, () => {
+                        responseObj.status = "OK"
+                        responseObj.avatarPath = pathToAvatar                
+                        imageHelper.moveFileAndSend(oldName, newFileLocation, responseObj, res);
+                    });   
+                })
             }
         })
     })
