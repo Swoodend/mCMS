@@ -13,8 +13,8 @@ export default class UploadImageModal extends Component {
         this.props.closeModal();
     }
 
-    updateAvatarSrc(currentUser, originalName){
-        this.props.onAvatarUpload(currentUser, originalName);
+    updateAvatarSrc(responseObj){
+        this.props.onAvatarUpload(responseObj);
     }
 
     render(){

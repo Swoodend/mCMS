@@ -26,15 +26,13 @@ export default class ImageUploader extends Component {
             return res.json();
         }).then((res) => {
             if (res.status === "OK"){
-                console.log('currentUser', res.currentUser);
-                console.log('originalname', res.originalName);
-                this.sendImageDataBack(res.currentUser, res.originalName);
+                this.sendImageDataBack(res);
             }
         });
     }
 
-    sendImageDataBack(curretUser, originalName){
-        this.props.updateAvatarSrc(curretUser, originalName);
+    sendImageDataBack(responseObj){
+        this.props.updateAvatarSrc(responseObj);
     }
 
 
