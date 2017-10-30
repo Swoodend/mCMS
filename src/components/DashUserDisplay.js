@@ -51,6 +51,12 @@ export default class DashUserDisplay extends Component {
 	handleClick(){
 		this.setState({
 			displayingUploadModal: !this.state.displayingUploadModal
+		}, () => {
+			let {displayingUploadModal} = this.state;
+			//only fetch user images when they are opening the modal, not when closing it
+			if (displayingUploadModal){
+				console.log('fetch users avatars here');
+			}
 		})
 	}
 
