@@ -140,19 +140,37 @@ app.get('/api/get-avatar/:email', (req, res) => {
     })
 })
 
+app.post('/api/set-avatar', (req, res) => {
+    let { email, path } = req.body;
+    User.findOneAndUpdate({email: email}, {$set: {avatar: path}}, {new: true}, (err, doc) => {
+        if (err){
+            res.json({status:"ERR"});
+        }
+        console.log(doc);
+        res.json({status:"OK", avatarPath: doc.avatar});
+    })
+})
+
 app.get('/public/uploads/:user/:fileName', (req, res) => {
     res.sendFile(path.join(__dirname + '/public/uploads/' + req.params.user + '/' + req.params.fileName));
 })
 
 app.get('/api/:token/avatars', (req, res) => {
     let token = req.params.token;
+    
     jwt.verify(token, secret, (err, decoded) => {
         let email = decoded.currentUser;
-        let path = './public/uploads/' + email;
-        fs.readdir(path, (err, files) => {
-            console.log('files', files);
-            res.json({"status":"OK", "fileNames": files});    
-        });
+        let pathToAvatar = './public/uploads/' + email;
+        let folderExists = fs.existsSync(path.join(__dirname, '/public/uploads', decoded.currentUser));
+        if (folderExists){
+            fs.readdir(pathToAvatar, (err, files) => {
+                console.log('files', files);
+                res.json({"status":"OK", "fileNames": files});    
+            });
+        } else {
+            res.json({"stauts": "OK", "fileNames": []})
+        }
+
     });
 })
 
