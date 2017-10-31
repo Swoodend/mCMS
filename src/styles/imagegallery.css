@@ -17,3 +17,10 @@
     flex-wrap: wrap;
     overflow-y: auto;
 }
+
+.user-uploaded-avatar { 
+    height: 100px;
+    width: 100px;
+    cursor: pointer;
+    outline: 1px solid black;
+}
