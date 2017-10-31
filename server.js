@@ -144,6 +144,18 @@ app.get('/public/uploads/:user/:fileName', (req, res) => {
     res.sendFile(path.join(__dirname + '/public/uploads/' + req.params.user + '/' + req.params.fileName));
 })
 
+app.get('/api/:token/avatars', (req, res) => {
+    let token = req.params.token;
+    jwt.verify(token, secret, (err, decoded) => {
+        let email = decoded.currentUser;
+        let path = './public/uploads/' + email;
+        fs.readdir(path, (err, files) => {
+            console.log('files', files);
+            res.json({"status":"OK", "fileNames": files});    
+        });
+    });
+})
+
 app.listen(port, () => { 
     console.log('app listening on', port);
 });
