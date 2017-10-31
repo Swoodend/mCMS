@@ -72,7 +72,10 @@ export default class ImageUploader extends Component {
                 <div className="image-gallery-container">
                     <div className="image-uploader-header">
                         <h3>Choose old avatar:</h3>
-                        <ImageGallery/>
+                        <ImageGallery 
+                        avatars={this.props.avatars}
+                        email = {this.props.email}
+                        />
                     </div>
 
                 </div>
