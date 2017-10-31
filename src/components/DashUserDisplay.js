@@ -79,6 +79,8 @@ export default class DashUserDisplay extends Component {
 	onAvatarUpload(responseObj){
 		this.setState({
 			avatarPath: responseObj.avatarPath
+		}, () => {
+			window.location.href="http://localhost:3000/dashboard"
 		});
 	}
 
