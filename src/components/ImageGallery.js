@@ -9,13 +9,31 @@ export default class ImageGallery extends Component {
         this.setNewAvatar = this.setNewAvatar.bind(this);
     }
 
-    setNewAvatar(fileName){
-        console.log('this was called!', fileName);
+    setNewAvatar(email, filePath){
+        let requestConfig = {
+            method: "POST", 
+            headers: {"Content-type" : "application/json"},
+            body: JSON.stringify({
+                email: email,
+                path: filePath
+            })
+        };
+        console.log('this was called!', email, filePath);
+        fetch('/api/set-avatar', requestConfig)
+            .then((res) => {
+                return res.json();
+            })
+            .then((res) => {
+                if (res.status === "OK"){
+                    window.location.href = 'http://localhost:3000/dashboard';
+                }
+            })
     }
 
     render(){
         console.log('ImageGallery', this.props.avatars);
-        let { avatars, email } = this.props;
+        let avatars = this.props.avatars || [];
+        let { email } = this.props;
         let srcPrefix = 'http://localhost:3001/public/uploads/' + email
         console.log(avatars, email);
         console.log(srcPrefix);
@@ -28,6 +46,7 @@ export default class ImageGallery extends Component {
                         src={srcPrefix + '/' + fileName}
                         fileName={fileName}
                         setNewAv={this.setNewAvatar}
+                        email={this.props.email}
                     />
                 )
             })
