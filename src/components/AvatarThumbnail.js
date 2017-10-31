@@ -7,7 +7,7 @@ export default class AvatarThubmnail extends Component {
     }
 
     setNewAvatar(){
-        this.props.setNewAv(this.props.fileName);
+        this.props.setNewAv(this.props.email, this.props.src);
     }
 
     render(){
