@@ -12,7 +12,8 @@ export default class DashUserDisplay extends Component {
 		this.state = {
 			displayingUploadModal:  false,
 			avatarPath: null,
-			currentUser: null
+			currentUser: null,
+			avatars: []
 		}
 	}
 
@@ -56,6 +57,21 @@ export default class DashUserDisplay extends Component {
 			//only fetch user images when they are opening the modal, not when closing it
 			if (displayingUploadModal){
 				console.log('fetch users avatars here');
+				let token = localStorage.getItem('currentUser');
+				let requestConfig = {
+					method: "GET", 
+					headers: {"Content-type" : "application/json"}
+				};
+
+				fetch('/api/' + token + '/avatars', requestConfig)
+					.then((res) => {
+						return res.json();
+					})
+					.then((res) => {
+						this.setState({
+							avatars: res.fileNames
+						})
+					})
 			}
 		})
 	}
@@ -83,6 +99,8 @@ export default class DashUserDisplay extends Component {
 				{displayingUploadModal && <UploadImageModal  
 					closeModal={this.handleClick}
 					onAvatarUpload={this.onAvatarUpload}
+					avatars = {this.state.avatars}
+					email = {this.state.currentUser}
 					/>}
 
 			</div>
