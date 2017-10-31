@@ -21,7 +21,11 @@ export default class UploadImageModal extends Component {
         return (
             <div style={{"width":"800px"}} className="upload-image-modal">
                 <div onClick={this.closeButtonClicked} className="close-button">x</div>
-                <ImageUploader updateAvatarSrc={this.updateAvatarSrc}/>
+                <ImageUploader 
+                    updateAvatarSrc={this.updateAvatarSrc}
+                    avatars={this.props.avatars}
+                    email = {this.props.email}
+                />
             </div>
         )
     }
