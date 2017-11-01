@@ -10,8 +10,8 @@ export default class NewBlog extends Component {
                 <form>
                     <div className="blog-form-row">
                             <h2 className="blog-forminput-header">Blog URL</h2>
-                            <label for ="bb1">
-                                <input name="bb1" className="blog-bar-color-1 nb-main-input"/>
+                            <label for ="burl">
+                                <input name="burl" className="blog-url nb-main-input"/>
                             </label>
                             <FormInstructionsContainer instructions={'url'}/>
                     </div>
