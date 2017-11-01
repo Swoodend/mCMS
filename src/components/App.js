@@ -7,6 +7,7 @@ import Login from './Login';
 import Dashboard from './Dashboard';
 import Account from './Account';
 import ContentPage from './ContentPage';
+import NewBlog from './NewBlog';
 
 
 export default class App extends Component {
@@ -55,6 +56,7 @@ export default class App extends Component {
             
             <Route path="/account" component={Account}/>
             <Route path="/content" component={ContentPage}/>
+            <Route path="/new/blog" component={NewBlog}/>
           </div>
         </BrowserRouter>
       );
