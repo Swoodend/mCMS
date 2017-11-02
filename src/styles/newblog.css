@@ -34,23 +34,14 @@
     outline: 0;
     border-width: 0 0 2px 0;
     border-color: #de4696;
-    width: 250px;
+    width: 623px;
+    padding-left: 10px;
 }
 
 .nb-main-textarea{
     outline: 0;
     border-width: 2px 2px 2px 2px;
     border-color: #de4696;
-}
-
-.accomodate-textarea-left{
-    position: relative;
-    left: 62.5px;
-}
-
-.accomodate-textarea-right {
-    position: relative;
-    right: 62px;
 }
 
 .new-blog-submit {
@@ -65,4 +56,9 @@
 
 .last {
     border: 0;
+}
+
+
+.blog-textarea-container {
+    width: 300px;
 }
