@@ -90,13 +90,13 @@ export default class NewBlog extends Component {
 
 
                     <div className="blog-form-row">
-                        <h2 className="blog-forminput-header accomodate-textarea-left">Body content text</h2>
+                        <h2 className="blog-forminput-header">Body content text</h2>
                         <label for ="bbc">
-                            <textarea name="bbc" rows="15" cols="100" className="blog-body-content nb-main-textarea">
+                            <textarea name="bbc" rows="15" cols="100"className="blog-body-content nb-main-textarea">
                                 Write your blog post here!
                             </textarea>
                         </label>
-                        <FormInstructionsContainer instructions={'bodyContent'} specialStyle="accomodate-textarea-right"/>
+                        <FormInstructionsContainer instructions={'bodyContent'}/>
                     </div>
                     
 
