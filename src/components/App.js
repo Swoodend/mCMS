@@ -8,6 +8,8 @@ import Dashboard from './Dashboard';
 import Account from './Account';
 import ContentPage from './ContentPage';
 import NewBlog from './NewBlog';
+import NewNewsletter from './NewNewsletter';
+import NewArticle from './NewArticle';
 
 
 export default class App extends Component {
@@ -57,6 +59,8 @@ export default class App extends Component {
             <Route path="/account" component={Account}/>
             <Route path="/content" component={ContentPage}/>
             <Route path="/new/blog" component={NewBlog}/>
+            <Route path="/new/article" component={NewArticle}/>
+            <Route path="/new/newsletter" component={NewNewsletter}/>
           </div>
         </BrowserRouter>
       );
