@@ -3,12 +3,12 @@ import FormInstructionsContainer from './FormInstructionsContainer';
 
 export default class ContentFormGenerator extends Component {
     render() {
-        let inputs = this.props.inputs.map((inputObj) => {
+        let inputs = this.props.inputs.map((inputObj, i) => {
             let classes = inputObj.classes.join(' ');
             return (
-                <div className="blog-form-row">
+                <div key={i} className="blog-form-row">
                     <h2 className="blog-forminput-header">{inputObj.inputHeader}</h2>
-                    <label for={inputObj.inputFor}>
+                    <label htmlFor={inputObj.inputFor}>
                         <input name={inputObj.inputName} className={classes}/>
                     </label>
                     <FormInstructionsContainer instructions={inputObj.instructions}/>
@@ -16,12 +16,12 @@ export default class ContentFormGenerator extends Component {
             )
         });
 
-        let textAreas = this.props.textAreas.map((textAreaObj) => {
+        let textAreas = this.props.textAreas.map((textAreaObj, i) => {
             let classes = textAreaObj.classes.join(' ');
             return (
-                <div className="blog-form-row">
+                <div key={i} className="blog-form-row">
                     <h2 className="blog-forminput-header">{textAreaObj.inputHeader}</h2>
-                    <label for={textAreaObj.labelFor}>
+                    <label htmlFor={textAreaObj.labelFor}>
                         <textarea name={textAreaObj.inputName} rows={textAreaObj.rows} cols={textAreaObj.cols} className={classes}>
                             {textAreaObj.defaultText}
                         </textarea>
