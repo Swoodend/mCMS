@@ -153,8 +153,6 @@ export default class NewNewsletter extends Component {
                     }
 
                 />
-
-
             </div>
         )
     }
