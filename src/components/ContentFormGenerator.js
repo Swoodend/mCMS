@@ -5,10 +5,18 @@ import { validateBlogForm, validateNewsletterForm, validateArticleForm } from '.
 export default class ContentFormGenerator extends Component {
 
     handleSubmit(e){
-        e.preventDefault();
         let type = e.target.id;
         if (type === "blog"){
-            validateBlogForm();    
+            let errors = validateBlogForm(e.target);
+            let hasErrors = Object.keys(errors)[0] || [];
+            if (hasErrors.length > 0){
+                //make this a flash message sometime
+                console.log('ERROR:', hasErrors, errors[hasErrors]);
+                e.preventDefault();
+            } else {
+                //create blog obj in DB
+                console.log('thats a pass');
+            }
         } else if (type === "newsletter"){
             validateNewsletterForm();
         } else {
