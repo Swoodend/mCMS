@@ -9,6 +9,7 @@ export default class NewBlog extends Component {
         return (
             <div className="new-blog-main-container">
                 <ContentFormGenerator
+                    id="blog"
                     inputs={
                         [
                             {

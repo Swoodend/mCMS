@@ -5,7 +5,8 @@ export default class NewNewsletter extends Component {
     render(){
         return (
             <div className="new-blog-main-container">
-                <ContentFormGenerator 
+                <ContentFormGenerator
+                    id="newsletter"
                     inputs= {
                         [
                             {
