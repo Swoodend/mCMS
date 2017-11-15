@@ -1,6 +1,15 @@
-export function validateBlogForm(form){
+export function validateForm(form, type){
     //form['burl'].value ---> the value of the Blog URL input
-    let requiredInputs = ['burl', 'blog-header', 'bbc'];
+    let requiredInputs;
+
+    if (type === 'blog'){
+        requiredInputs = ['burl', 'blog-header', 'bbc'];
+    } else if (type === 'newsletter'){
+        requiredInputs = ['nurl', 'news-header', 'npc'];
+    } else {
+        requiredInputs = ['aurl', 'article-header', 'apc'];
+    }
+
     let urlRegex =  /[^0-9a-zA-Z-_]/g;
     let errorHash = {};
 
@@ -13,22 +22,10 @@ export function validateBlogForm(form){
         }
     }
     //otherwise check that blog URL has acceptable format
-    let formHasBadUrl = form['burl'].value.match(urlRegex)
+    let formHasBadUrl = form[requiredInputs[0]].value.match(urlRegex);
     if (formHasBadUrl){
-        errorHash['burl'] = `url cannot contain ${formHasBadUrl[0]}`
+        errorHash[requiredInputs[0]] = `url cannot contain ${formHasBadUrl[0]}`
     }
 
     return errorHash;
 }
-
-export function validateNewsletterForm(){
-    console.log("VALIDATING THE NEWSLETTER FORM");
-}
-
-
-export function validateArticleForm() {
-    console.log("VALIDATING THE ARTICLE FORM");
-}
-
-
-
