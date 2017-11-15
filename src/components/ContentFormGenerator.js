@@ -1,27 +1,20 @@
 import React, { Component } from 'react';
 import FormInstructionsContainer from './FormInstructionsContainer';
-import { validateBlogForm, validateNewsletterForm, validateArticleForm } from '../helpers/form_validation.js';
+import { validateForm } from '../helpers/form_validation.js';
 
 export default class ContentFormGenerator extends Component {
 
     handleSubmit(e){
         let type = e.target.id;
-        if (type === "blog"){
-            let errors = validateBlogForm(e.target);
-            let hasErrors = Object.keys(errors)[0] || [];
-            if (hasErrors.length > 0){
-                //make this a flash message sometime
-                console.log('ERROR:', hasErrors, errors[hasErrors]);
-                e.preventDefault();
-            } else {
-                //create blog obj in DB
-                console.log('thats a pass');
-            }
-        } else if (type === "newsletter"){
-            validateNewsletterForm();
+        let errors = validateForm(e.target, type);
+        let hasErrors = Object.keys(errors)[0] || [];
+        if (hasErrors.length > 0){
+            //make this a flash message sometime
+            console.log('ERROR:', hasErrors, errors[hasErrors]);
+            e.preventDefault();
         } else {
-            //its an article
-            validateArticleForm();
+            //create blog obj in DB
+            console.log('thats a pass');
         }
     }
 
