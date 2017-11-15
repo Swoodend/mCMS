@@ -6,7 +6,8 @@ export default class NewArticle extends Component {
         return (
             <div className="new-blog-main-container">
                 <ContentFormGenerator
-                    id="article" 
+                    id="article"
+                    action="/api/new/article" 
                     inputs= {
                         [
                             {

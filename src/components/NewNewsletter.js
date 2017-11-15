@@ -7,6 +7,7 @@ export default class NewNewsletter extends Component {
             <div className="new-blog-main-container">
                 <ContentFormGenerator
                     id="newsletter"
+                    action="/api/new/newsletter" 
                     inputs= {
                         [
                             {
