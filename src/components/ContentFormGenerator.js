@@ -46,7 +46,12 @@ export default class ContentFormGenerator extends Component {
         });
 
         return (
-            <form id={this.props.id} onSubmit={this.handleSubmit}>
+            <form 
+                action={this.props.action} 
+                id={this.props.id} 
+                onSubmit={this.handleSubmit}
+                method="POST"
+            >
                 {inputs}
                 {textAreas}
                 <div className="blog-form-row last">
