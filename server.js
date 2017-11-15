@@ -172,7 +172,19 @@ app.get('/api/:token/avatars', (req, res) => {
         }
 
     });
-})
+});
+
+app.post('/api/new/blog', (req, res) => {
+    console.log('new blog submission received', req.body);
+});
+
+app.post('/api/new/newsletter', (req, res) => {
+    console.log('new newletter submission received', req.body);
+});
+
+app.post('/api/new/article', (req, res) => {
+    console.log('new article submission received', req.body);
+});
 
 app.listen(port, () => { 
     console.log('app listening on', port);
