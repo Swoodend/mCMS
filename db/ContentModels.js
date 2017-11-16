@@ -9,6 +9,7 @@ const contentSchema = new Schema({
     barColorTwo: { type: String },
     barColorThree: { type: String },
     barColorFour: { type: String },
+    header:  { type: String },
     carouselImages: { type: Array, default: [] },
     primaryImage: { type: String },
     secondaryImageOne: { type: String },
