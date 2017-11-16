@@ -195,6 +195,16 @@ app.post('/api/new/newsletter', (req, res) => {
 
 app.post('/api/new/article', (req, res) => {
     console.log('new article submission received', req.body);
+    jwt.verify(req.body.creator, secret, (err, decoded) => {
+        req.body.creator = decoded.currentUser;
+        let articleObj = contentBuilder.buildNewArticleObj(req.body);
+        let article = new Content(articleObj);
+        article.save((err) => {
+            if (err) {
+                console.log('error saving new article', err);
+            }
+        })
+    })
 });
 
 app.listen(port, () => { 
