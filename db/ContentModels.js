@@ -10,7 +10,7 @@ const contentSchema = new Schema({
     barColorThree: { type: String },
     barColorFour: { type: String },
     header:  { type: String },
-    carouselImages: { type: Array, default: [] },
+    carouselImages: { type: Array },
     primaryImage: { type: String },
     secondaryImageOne: { type: String },
     secondaryImageTwo: { type: String },    
