@@ -34,6 +34,30 @@ function buildNewBlogObj(blogData){
     };
 }
 
-module.exports = {
-    buildNewBlogObj : buildNewBlogObj
+function buildNewArticleObj(articleData){
+    return {
+        type: "article",
+        creator: articleData.creator,
+        url: articleData.aurl,
+        barColorOne: articleData.ab1,
+        barColorTwo: articleData.ab2,
+        barColorThree: articleData.ab3,
+        barColorFour: articleData.ab4,
+        header: articleData['article-header'],
+        primaryImage: articleData.api,
+        facebookUrl: articleData.flfb,
+        instagramUrl: articleData.flinsta,
+        snapchatUrl: articleData.flsnap,
+        contact: articleData['footer-contact'],
+        address: articleData['footer-address'],
+        generalLinkHrefOne: articleData.ftulh1,
+        generalLinkTextOne: articleData.ftult1,
+        generalLinkHrefTwo: articleData.ftulh2,
+        generalLinkTextTwo: articleData.ftult2
+    }
 }
+
+module.exports = {
+    buildNewBlogObj : buildNewBlogObj,
+    buildNewArticleObj: buildNewArticleObj
+};
