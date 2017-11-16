@@ -5,13 +5,13 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
 const User = require('./db/UserModel.js').User;
+const Content = require('./db/ContentModels.js');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const secret = 'jfha7q8r6yudfgjhasfgvsgfag7rt6twerGHJSAOFG';
 const multer = require('multer');
 const fs = require('fs');
 const imageHelper = require('./helpers/image_upload/image_helpers.js');
-
 const app = express();
 const port = process.env.PORT || 3001;
 
