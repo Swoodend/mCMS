@@ -53,9 +53,9 @@ export default class NewArticle extends Component {
                                 instructions: "need to write instructions for this" 
                             },
                             {
-                                inputHeader: "Newsletter Primary Image",
-                                labelFor: "npi",
-                                inputName: "npi",
+                                inputHeader: "Article Primary Image",
+                                labelFor: "api",
+                                inputName: "api",
                                 classes: ["news-primary-image", "nb-main-input"],
                                 instructions: "need to write instructions for this"
                             },
