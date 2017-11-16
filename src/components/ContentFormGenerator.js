@@ -54,6 +54,7 @@ export default class ContentFormGenerator extends Component {
             >
                 {inputs}
                 {textAreas}
+                <input type="hidden" name="creator" value={localStorage.getItem('currentUser')}/>
                 <div className="blog-form-row last">
                     <input type="submit" value="Submit" className="new-blog-submit"/>
                 </div>
