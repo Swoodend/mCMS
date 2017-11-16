@@ -5,13 +5,14 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
 const User = require('./db/UserModel.js').User;
-const Content = require('./db/ContentModels.js');
+const Content = require('./db/ContentModels.js').Content;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const secret = 'jfha7q8r6yudfgjhasfgvsgfag7rt6twerGHJSAOFG';
 const multer = require('multer');
 const fs = require('fs');
 const imageHelper = require('./helpers/image_upload/image_helpers.js');
+const contentBuilder = require('./src/helpers/content_builders.js');
 const app = express();
 const port = process.env.PORT || 3001;
 
@@ -19,7 +20,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/mcms');
-
 app.post('/api/login', (req, res) => {
     let email = req.body.email;
     let password = req.body.password;
@@ -175,7 +175,18 @@ app.get('/api/:token/avatars', (req, res) => {
 });
 
 app.post('/api/new/blog', (req, res) => {
-    console.log('new blog submission received', req.body);
+    console.log('new blog submission received');
+    console.log(req.body);
+    jwt.verify(req.body.creator, secret, (err, decoded) => {
+        req.body.creator = decoded.currentUser;
+        let blogObj = contentBuilder.buildNewBlogObj(req.body);
+        let blog = new Content(blogObj);
+        blog.save((err) => {
+            if (err) {
+                console.log('error saving new blog', err);
+            }
+        });
+    });
 });
 
 app.post('/api/new/newsletter', (req, res) => {
