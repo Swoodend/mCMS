@@ -10,7 +10,9 @@ import ContentPage from './ContentPage';
 import NewBlog from './NewBlog';
 import NewNewsletter from './NewNewsletter';
 import NewArticle from './NewArticle';
-
+import ViewBlog from './ViewBlog';
+import ViewArticle from './ViewArticle';
+import ViewNewsletter from './ViewNewsletter';
 
 export default class App extends Component {
 
@@ -61,6 +63,15 @@ export default class App extends Component {
             <Route path="/new/blog" component={NewBlog}/>
             <Route path="/new/article" component={NewArticle}/>
             <Route path="/new/newsletter" component={NewNewsletter}/>
+            <Route path="/blog/:blogUrl" render={(props) => {
+              return <ViewBlog {...props}/>
+            }}/>
+            <Route path="/article/:articleUrl" render={(props) => {
+              return <ViewArticle {...props}/>
+            }}/>
+            <Route path="/newsletter/:newsletterUrl" render={(props) => {
+              return <ViewNewsletter {...props}/>
+            }}/>
           </div>
         </BrowserRouter>
       );
