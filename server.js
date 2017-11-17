@@ -191,6 +191,16 @@ app.post('/api/new/blog', (req, res) => {
 
 app.post('/api/new/newsletter', (req, res) => {
     console.log('new newletter submission received', req.body);
+    jwt.verify(req.body.creator, secret, (err, decoded) => {
+        req.body.creator = decoded.currentUser;
+        let newsletterObj = contentBuilder.buildNewNewsletterObj(req.body);
+        let newsletter = new Content(newsletterObj);
+        newsletter.save((err) => {
+            if (err){
+                console.log('error saving new newsletter', err);
+            }
+        })
+    });
 });
 
 app.post('/api/new/article', (req, res) => {
