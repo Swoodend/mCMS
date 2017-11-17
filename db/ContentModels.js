@@ -28,7 +28,8 @@ const contentSchema = new Schema({
     generalLinkHrefOne: { type: String },
     generalLinkTextOne: { type: String },
     generalLinkHrefTwo: { type: String },
-    generalLinkTextTwo: { type: String }
+    generalLinkTextTwo: { type: String },
+    content: { type: String }
 });
 
 let Content = mongoose.model('Content', contentSchema);
