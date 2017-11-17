@@ -30,7 +30,8 @@ function buildNewBlogObj(blogData){
         generalLinkHrefOne: blogData.ftulh1,
         generalLinkTextOne: blogData.ftult1,
         generalLinkHrefTwo: blogData.ftulh2,
-        generalLinkTextTwo: blogData.ftult2
+        generalLinkTextTwo: blogData.ftult2,
+        content: blogData.bbc
     };
 }
 
@@ -53,11 +54,39 @@ function buildNewArticleObj(articleData){
         generalLinkHrefOne: articleData.ftulh1,
         generalLinkTextOne: articleData.ftult1,
         generalLinkHrefTwo: articleData.ftulh2,
-        generalLinkTextTwo: articleData.ftult2
-    }
+        generalLinkTextTwo: articleData.ftult2,
+        content: articleData.apc
+    };
+}
+
+function buildNewNewsletterObj(nlData){
+    return {
+        type: "newsletter",
+        creator: nlData.creator,
+        url: nlData.nurl,
+        barColorOne: nlData.nb1,
+        barColorTwo: nlData.nb2,
+        barColorThree: nlData.nb3,
+        barColorFour: nlData.nb4,
+        header: nlData['news-header'],
+        primaryImage: nlData.npi,
+        secondaryImageOne: nlData.nsi1,
+        secondaryImageTwo: nlData.nsi2,
+        facebookUrl: nlData.flfb,
+        instagramUrl: nlData.flinsta,
+        snapchatUrl: nlData.flsnap,
+        contact: nlData['footer-contact'],
+        address: nlData['footer-address'],
+        generalLinkHrefOne: nlData.ftulh1,
+        generalLinkTextOne: nlData.ftult1,
+        generalLinkHrefTwo: nlData.ftulh2,
+        generalLinkTextTwo: nlData.ftult2,
+        content: nlData.npc        
+    };
 }
 
 module.exports = {
     buildNewBlogObj : buildNewBlogObj,
-    buildNewArticleObj: buildNewArticleObj
+    buildNewArticleObj: buildNewArticleObj,
+    buildNewNewsletterObj: buildNewNewsletterObj
 };
