@@ -63,15 +63,9 @@ export default class App extends Component {
             <Route path="/new/blog" component={NewBlog}/>
             <Route path="/new/article" component={NewArticle}/>
             <Route path="/new/newsletter" component={NewNewsletter}/>
-            <Route path="/blog/:blogUrl" render={(props) => {
-              return <ViewBlog {...props}/>
-            }}/>
-            <Route path="/article/:articleUrl" render={(props) => {
-              return <ViewArticle {...props}/>
-            }}/>
-            <Route path="/newsletter/:newsletterUrl" render={(props) => {
-              return <ViewNewsletter {...props}/>
-            }}/>
+            <Route path="/blog/:blogUrl" component={ViewBlog}/>
+            <Route path="/article/:articleUrl" component={ViewArticle}/>
+            <Route path="/newsletter/:newsletterUrl" component={ViewNewsletter}/>
           </div>
         </BrowserRouter>
       );
