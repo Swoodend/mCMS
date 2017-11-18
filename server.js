@@ -217,6 +217,52 @@ app.post('/api/new/article', (req, res) => {
     })
 });
 
+app.get('/api/blog/:blogUrl', (req, res) => {
+    let { blogUrl } = req.params;
+    Content.findOne({type: "blog", url: blogUrl}, (err, blog) => {
+        //blog is null if nothing is found
+        if(err){
+            console.log('something went wrong looking for the blog');
+            res.send("ERROR");
+        }
+        if (blog){
+            res.send(blog);    
+        } else {
+            res.send({status: "no blog found"});
+        }
+    });
+});
+
+app.get('/api/article/:articleUrl', (req, res) => {
+    let { articleUrl } = req.params;
+    Content.findOne({type:"article", url:articleUrl}, (err, article) => {
+        if (err){
+            console.log('something went wrong looking for the article', err);
+            res.send('ERROR');
+        }
+        if (article){
+            res.json(article);
+        } else {
+            res.json({status: "no article found"})
+        }
+    });
+});
+
+app.get('/api/newsletter/:newsletterUrl', (req, res) => {
+    let { newsletterUrl } = req.params;
+    Content.findOne({type: "newsletter", url: newsletterUrl}, (err, newsletter) => {
+        if (err){
+            console.log('something went wrong looking for the aritcle', err);
+            res.send('ERROR');
+        }
+        if (newsletter){
+            res.json(newsletter);
+        } else {
+            res.json({status: "no newsletter found"});
+        }
+    });
+});
+
 app.listen(port, () => { 
     console.log('app listening on', port);
 });
