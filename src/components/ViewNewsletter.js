@@ -10,6 +10,10 @@ export default class ViewNewsletters extends Component {
         }
     }
 
+    componentWillMount(){
+        this.props.hideNav();
+    }
+
     componentDidMount(){
         fetch(`/api/newsletter/${this.props.match.params.newsletterUrl}`)
         .then((res) => {

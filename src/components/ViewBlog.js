@@ -11,6 +11,10 @@ export default class ViewBlog extends Component {
         }
     }
 
+    componentWillMount(){
+        this.props.hideNav();
+    }
+
     componentDidMount(){
         fetch(`/api/blog/${this.props.match.params.blogUrl}`)
         .then((res) => {

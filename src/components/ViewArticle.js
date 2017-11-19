@@ -10,6 +10,10 @@ export default class ViewArticle extends Component{
         }
     }
 
+    componentWillMount(){
+        this.props.hideNav();
+    }
+
     componentDidMount(){
         fetch(`/api/article/${this.props.match.params.articleUrl}`)
         .then((res) => {
