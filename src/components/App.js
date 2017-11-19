@@ -19,9 +19,10 @@ export default class App extends Component {
   constructor(props){
     super(props);
     this.checkLogin = this.checkLogin.bind(this);
-
+    this.hideNav = this.hideNav.bind(this);
     this.state = {
-      loggedIn: false
+      loggedIn: false,
+      navbar: <Navbar checkLoginState={this.checkLogin}/>
     }
   }
 
@@ -31,13 +32,17 @@ export default class App extends Component {
     return localStorage.getItem("currentUser");
   }
 
+  hideNav(){
+    this.setState({navbar: null});
+  }
+
   render(){
       return (
         <BrowserRouter>
           <div>
-            <Navbar checkLoginState={this.checkLogin}/>
+            {this.state.navbar}
             <Route exact path="/" component={Home}/>
-            
+
             <Route path="/login" render={() => {
               {if(localStorage.getItem('currentUser')){
                 return <Redirect to="/dashboard"/>
@@ -63,9 +68,15 @@ export default class App extends Component {
             <Route path="/new/blog" component={NewBlog}/>
             <Route path="/new/article" component={NewArticle}/>
             <Route path="/new/newsletter" component={NewNewsletter}/>
-            <Route path="/blog/:blogUrl" component={ViewBlog}/>
-            <Route path="/article/:articleUrl" component={ViewArticle}/>
-            <Route path="/newsletter/:newsletterUrl" component={ViewNewsletter}/>
+            <Route path="/blog/:blogUrl" render={(props) => {
+              return <ViewBlog {...props} hideNav={this.hideNav}/>
+            }}/>            
+            <Route path="/article/:articleUrl" render={(props) => {
+              return <ViewArticle {...props}  hideNav={this.hideNav}/>
+            }}/>
+            <Route path="/newsletter/:newsletterUrl" render={(props) => {
+              return <ViewNewsletter {...props} hideNav={this.hideNav}/>
+            }}/>
           </div>
         </BrowserRouter>
       );
